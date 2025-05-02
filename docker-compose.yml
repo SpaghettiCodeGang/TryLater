@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: trylater_db
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    image: openjdk:21-jdk-slim
+    container_name: trylater
+    restart: unless-stopped
+    volumes:
+      - ./trylater.jar:/app/app.jar
+      - ./images:/app/images
+    working_dir: /app
+    command: [
+      "java", "-Dspring.profiles.active=prod",
+      "-Dspring.datasource.username=${SPRING_DATASOURCE_USERNAME}",
+      "-Dspring.datasource.password=${SPRING_DATASOURCE_PASSWORD}",
+      "-Djwt.secret=${JWT_SECRET}", "-jar", "app.jar"
+    ]
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/trylater_db
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+volumes:
+  db_data:
