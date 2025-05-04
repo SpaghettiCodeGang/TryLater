@@ -7,8 +7,9 @@ Sie verwaltet Nutzerdaten, Geschäftslogik und liefert gleichzeitig das Frontend
 ## 🔗 Projekt-Links
 - **[Projekt-Wiki](https://github.com/SpaghettiCodeGang/TryLater-Server/wiki)**
 - **[Projekt-Board](https://github.com/orgs/SpaghettiCodeGang/projects/1)**
-- **[TryLater-Server](https://github.com/SpaghettiCodeGang/TryLater-Server)**
-- **[TryLater-Client](https://github.com/SpaghettiCodeGang/TryLater-Client)**
+- **[TryLater-Server-Repo](https://github.com/SpaghettiCodeGang/TryLater-Server)**
+- **[TryLater-Client-Repo](https://github.com/SpaghettiCodeGang/TryLater-Client)**
+- **[Live-Demo “TryLater”](https://www.trylater.de)**
 
 ---
 
